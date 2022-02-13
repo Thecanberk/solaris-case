@@ -1,0 +1,98 @@
+.container {
+    min-height: 90vh;
+    background-image: url(../../../public/saturn.jpg);
+    background-size: cover;
+    background-position: top;
+    height: fit-content;
+}
+
+.btn-dashboard-wrapper {
+    display: flex;
+    justify-content: end;
+    padding: 1rem 2rem 1rem 1rem;
+}
+
+.dropdown-dashboard-wrapper {
+    display: flex;
+    justify-content: end;
+    padding: 1rem 2rem 1rem 1rem;
+    grid-column: 3;
+}
+
+.date-button {
+    width: 2rem;
+    height: 1rem;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 1rem;
+}
+
+
+.taxonomy {
+    grid-column: span 2;
+}
+
+ .pie {
+    grid-column: span 1;
+} 
+
+ .timeline {
+    grid-column: span 2;
+} 
+
+@media (min-width: 400px) {
+    .wrapper { grid-template-columns: repeat(1, 1fr); }
+    .taxonomy {
+        grid-column: span 1;
+        /* grid-row: 1; */
+    }
+    .pie {
+        grid-column: span 1;
+        /* grid-row: 1; */
+    } 
+    .timeline {
+        grid-column: span 1;
+    } 
+    .dropdown-dashboard-wrapper {
+        grid-column: 1;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .wrapper { grid-template-columns: repeat(2, 1fr); }
+    .taxonomy {
+        grid-column: span 2;
+        /* grid-row: 1; */
+    }
+    .pie {
+        grid-column: span 1;
+        /* grid-row: 1; */
+    } 
+    .timeline {
+        grid-column: span 2;
+    } 
+    .dropdown-dashboard-wrapper {
+        grid-column: 2;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .wrapper { grid-template-columns: repeat(3, 1fr); }
+    .taxonomy {
+        grid-column: span 3;
+        /* grid-row: 1; */
+    }
+    .pie {
+        grid-column: span 1;
+        /* grid-row: 1; */
+    } 
+    .timeline {
+        grid-column: span 3;
+    } 
+    .dropdown-dashboard-wrapper {
+        grid-column: 3;
+    }
+  }
+  

@@ -1,9 +1,10 @@
 .App {
   text-align: center;
+  min-width: fit-content;
 }
 
 .App-logo {
-  height: 40vmin;
+  max-width: 5rem;
   pointer-events: none;
 }
 
@@ -15,13 +16,19 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-main {
+  color: wheat;
+  display: flex;
+  gap: 2rem;
 }
 
 .App-link {
@@ -35,4 +42,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App-content {
+  display: grid;
+  grid-template-columns: 10rem 10rem 10rem;
+  grid-gap: 1rem;
 }

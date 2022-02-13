@@ -1,0 +1,28 @@
+.dropdown-menu {
+    font-size: 1.75rem;
+}
+
+#dropdown-container .custom-dropdown-control {
+    border-radius: 1rem;
+    background-color: #FF8042;
+    border: none;
+    color: wheat;
+  }
+  
+  #dropdown-container .custom-dropdown-menu {
+    border-radius: 1rem;
+    color: wheat;
+  }
+  
+  #dropdown-container .Dropdown-option {
+    background-color: #FFBB28;
+  }
+  
+  #dropdown-container .Dropdown-option:hover {
+    background-color: #00C49F;
+  }
+  
+  #dropdown-container .Dropdown-arrow {
+    border-color: #00C49F transparent transparent;
+    border-width: .7rem .7rem;
+  }
