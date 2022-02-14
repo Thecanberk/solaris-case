@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 import * as solarisData from './Solaris-2.json';
@@ -18,7 +18,7 @@ export interface ISolarisData {
   age: string;
   diet: string;
   taxonomy: string[];
-  id: number;
+  id: string;
   time?: string;
 }
 
@@ -28,18 +28,18 @@ export interface ISolarisTimeLine {
 }
 
 export interface ISolarisNormalizeData {
-  creatureData: Map<number, ISolarisData[]> | undefined;
+  creatureData: Map<string, ISolarisData[]>;
   timeData: ISolarisTimeLine[];
 
 }
 
 const loadData = () => {
-  const creatureData: Map<number,ISolarisData[]> = new Map<number,ISolarisData[]>();
+  const creatureData: Map<string,ISolarisData[]> = new Map<string,ISolarisData[]>();
   let aliveCreatures: ISolarisData[] = [];
 
   let solData: ISolarisTimeLine[] = [];
 
-  (solarisData as any).default.map((item: any) => {
+  (solarisData as any).default.forEach((item: any) => {
     const time = new Date(item[0]).toLocaleDateString();
 
     solData.push({timeLine: time, solarisDatas: item[1]});

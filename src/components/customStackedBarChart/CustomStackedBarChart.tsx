@@ -33,7 +33,7 @@ const CustomStackedBarChart = React.memo(({data, dataKeyRow, dataKeyColumns}: IC
             <Tooltip />
             <Legend />
             {dataKeyColumns.map((item, index) => (
-            <Bar dataKey={item} stackId="a" fill={COLORS[index % COLORS.length]} />
+            <Bar key={`bar-${index}`} dataKey={item} stackId="a" fill={COLORS[index % COLORS.length]} />
             ))}
           </BarChart>
         </ResponsiveContainer>

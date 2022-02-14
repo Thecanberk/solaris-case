@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import "./customPieChart.css"
 
@@ -14,13 +14,11 @@ interface ICustomPieChart {
 
 const CustomPieChart = React.memo(({data, filterOptions, defaultFilterOption, filterFunc}: ICustomPieChart) => {
   const [dataKey, setDataKey] = useState(defaultFilterOption ? defaultFilterOption.value : filterOptions[0].value);
-  const [filterValue, setFilterValue] = useState(defaultFilterOption = defaultFilterOption || filterOptions[0]);
+  const [filterValue] = useState(defaultFilterOption = defaultFilterOption || filterOptions[0]);
 
   const changeFilterOption = useCallback((e) => setDataKey(e.value), []);
 
   const filteredData = filterFunc ? data.filter(filterFunc) : [...data];
-
-  
 
   const COLORS = ['#FF8042', '#FFBB28', '#00C49F', '#0088FE'];
 

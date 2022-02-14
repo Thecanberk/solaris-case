@@ -23,8 +23,7 @@
     margin: -1rem;
 }
 
-.btn {
-    /* we want it to be exactly the same look like the same as button  */ }
+.btn { }
     .btn:link, .btn:visited {
       text-transform: uppercase;
       text-decoration: none;
@@ -36,7 +35,6 @@
       position: relative;
       font-size: 1.6rem; }
     .btn:hover {
-      /* transform: translateY(-0.3rem); */
       box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
       .btn:hover::after {
         transform: scaleX(1.4) scaleY(1.6);
@@ -50,9 +48,7 @@
       .btn--white::after {
         background-color: white; }
     .btn::after {
-      /* content and display property must be specified */
       content: "";
-      /* inline-block because button that we have also inline block */
       display: inline-block;
       height: 100%;
       width: 100%;
@@ -79,7 +75,6 @@
     background-color: #55c57a;
     color: white;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-    /* transform: translateY(-0.2rem);  */
 }
   
   .btn-text:active {

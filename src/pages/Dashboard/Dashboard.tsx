@@ -1,22 +1,17 @@
-import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { ISolarisData, ISolarisNormalizeData, ISolarisTimeLine } from "../../App";
+import React, { useState, useCallback, useMemo } from "react";
+import { ISolarisNormalizeData, ISolarisTimeLine } from "../../App";
 import "./Dashboard.css";
 
-import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import CustomPieChart from "../../components/custompieChart/CustomPieChart";
-import { stringify } from "querystring";
 import Card from "../../components/card/Card";
-import GridLayout from "react-grid-layout";
 import CustomStackedBarChart from "../../components/customStackedBarChart/CustomStackedBarChart";
-import { IndexType, Type } from "typescript";
 import CustomSimpleLineChart from "../../components/customSimpleLineChart/CustomSimpleLineChart";
 import CustomDatePicker from "../../components/customDatePicker/CustomDatePicker";
-import { countData, INormalizeStatusData, ITaxonomytatusData, taxonomyData } from "../../utility/dataUtility";
-import { time } from "console";
+import { countData, taxonomyData } from "../../utility/dataUtility";
 import CustomDropdown from "../../components/customDropdown/CustomDropdown";
 
 interface IDashboard {
-  data: ISolarisNormalizeData | undefined;
+  data: ISolarisNormalizeData;
 }
 
 const dataKeyColumns = ["dead", "alive", "unknown"];
@@ -26,7 +21,7 @@ const taxonomyColumns = ["dead", "alive", "unknown"];
 const creatureDataKeyColumns = ["status.alive"];
 
 
-const Dashboard = ({ data: {timeData, creatureData} }: any) => {
+const Dashboard = ({ data: {timeData, creatureData} }: IDashboard) => {
   const [date, setDate] = useState(1);
   const [creatureId, setCreatureId] = useState("100828");
   const ageFilter = useCallback((item) => item.key === "age", []);
@@ -39,14 +34,14 @@ const Dashboard = ({ data: {timeData, creatureData} }: any) => {
       }
       return e;
      })
-  }, [])
+  }, [timeData.length])
 
   const decreaseClicked = useCallback(() => {setDate(e => {
     if (timeData.length - e - 1 !== 0) {
       return e += 1;
     }
     return e;
-  })}, [])
+  })}, [timeData.length])
 
   const creatureIdChange = useCallback((e) => {
     setCreatureId(e.value);
@@ -76,9 +71,12 @@ const Dashboard = ({ data: {timeData, creatureData} }: any) => {
     const youngDietData = countData(timeData[timeData?.length - date].solarisDatas, ["diet"], undefined, (item: any) => (item.age === "young"));
     const taxonomy = taxonomyData(timeData[timeData?.length - date].solarisDatas, 50);
     return {normalizeDate, youngDietData, taxonomy};
-  }, [date])
+  }, [date, timeData])
 
-  const creatureCount = useMemo(() => (countData(creatureData.get(creatureId), ["time"])), [creatureId]);
+  const creatureCount = useMemo(() => {
+    const creature = creatureData.get(creatureId) || [];
+    return countData(creature, ["time"])
+  }, [creatureId, creatureData]);
 
   return (
       

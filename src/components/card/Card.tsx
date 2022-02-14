@@ -1,16 +1,22 @@
 import React from "react";
 import "./card.css";
 
-const Card = ({header = "", footer = "", children}:React.PropsWithChildren<{header?: string, footer?: string}>) => {
+type ICard ={
+  header:string,
+  children?: React.ReactNode
+}
+
+const Card = ({header = "", children}: ICard) => {
     return (
         <div className="card">
         <span className="card-header">{header}</span>
         <div className="card-wrapper">
           <span className="card-container">
-              {children}
+            <>
+            {children}
+            </>
           </span>
         </div>
-        {/* <span className="featuredSub">{footer}</span> */}
       </div>
     )
 }

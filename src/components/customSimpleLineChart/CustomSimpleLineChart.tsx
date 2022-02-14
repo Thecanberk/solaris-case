@@ -33,7 +33,7 @@ const CustomSimpleLineChart = React.memo(({data, dataKeyRow, dataKeyColumns}: IC
             <Tooltip />
             <Legend />
             {dataKeyColumns.map((columKey, index) => (
-                <Line type="monotone" dataKey={columKey} stroke={COLORS[index % COLORS.length]} />
+                <Line key={`line-${index}`} type="monotone" dataKey={columKey} stroke={COLORS[index % COLORS.length]} />
             ))}
           </LineChart>
         </ResponsiveContainer>
